@@ -1,0 +1,47 @@
+# docker-compose.yml
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:13.10
+    env_file: .env
+    volumes:
+      # ВАЖНО: корректный путь данных Postgres
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend/
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    # Скрипт ниже применит миграции и соберёт статику
+    entrypoint: ["/app/entrypoint.sh"]
+    command: ["gunicorn", "wizzdigital.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=3"]
+    volumes:
+      # Статика будет собираться в /app/collected_static
+      - static:/app/collected_static
+      # Медиа — на volume
+      - media:/app/media/
+    expose:
+      - "8000"
+
+  gateway:
+    build: ./gateway/
+    depends_on:
+      - backend
+    volumes:
+      # Nginx будет читать статику отсюда (путь должен совпасть с его конфигом)
+      - static:/staticfiles/
+      - media:/app/media/
+    ports:
+      - "8000:80"

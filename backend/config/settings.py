@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "1insecure1-1default1")
 
 # DEBUG
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS
 if DEBUG:
@@ -153,7 +153,7 @@ THUMBNAIL_ALIASES = {
 FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 
-# Логирование (упрощённое)
+# Логирование
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,

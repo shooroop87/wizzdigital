@@ -15,8 +15,8 @@ else:
     from urllib import urlencode  # type: ignore  # noqa: F401
 
 import googlemaps
-from api.forms import DetailsForm, ExtrasForm, SearchForm, VehicleForm
-from api.models import Booking, Search
+from core.forms import DetailsForm, ExtrasForm, SearchForm, VehicleForm
+from core.models import Booking, Search
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives

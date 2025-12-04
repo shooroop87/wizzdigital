@@ -1,4 +1,4 @@
-from api.models import Booking, Search
+from core.models import Booking, Search
 from django.contrib import admin
 
 

@@ -1,0 +1,370 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ site_name }} - Your Digital Marketing Agency{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="aximo-hero-section dark-bg">
+    <div class="container position-relative">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="aximo-hero-content">
+                    <h1>
+                        <span class="aximo-title-animation">
+                            Your Digital
+                            <img src="{% static 'images/v1/star.png' %}" alt="">
+                        </span>
+                        Marketing Agency
+                    </h1>
+                    <p>Welcome to Wizz Digital, where innovation meets impact in the dynamic realm of marketing. We redefine the landscape by blending creativity, cutting-edge technology, and strategic insights.</p>
+                    <div class="aximo-hero-user-wrap">
+                        <div class="aximo-hero-user-thumb">
+                            <div class="aximo-hero-user-thumb-item wow fadeInUpX" data-wow-delay="0s">
+                                <img src="{% static 'images/v1/user1.png' %}" alt="">
+                            </div>
+                            <div class="aximo-hero-user-thumb-item wow fadeInUpX" data-wow-delay="0.25s">
+                                <img src="{% static 'images/v1/user3.png' %}" alt="">
+                            </div>
+                            <div class="aximo-hero-user-thumb-item wow fadeInUpX" data-wow-delay="0.4s">
+                                <img src="{% static 'images/v1/user2.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="aximo-hero-user-data">
+                            <p>Trusted by hundreds of satisfied clients</p>
+                        </div>
+                    </div>
+                    <a class="aximo-call-btn" href="{% url 'core:contact' %}">Book a free consultation <i class="icon-call"></i></a>
+                    <div class="aximo-hero-shape">
+                        <img src="{% static 'images/v1/shape1.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-hero-thumb wow fadeInRight" data-wow-delay="0s">
+                    <img src="{% static 'images/v1/hero-thumb.png' %}" alt="Digital Marketing">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="section aximo-section-padding4">
+    <div class="container">
+        <div class="aximo-section-title center">
+            <h2>
+                We provide effective
+                <span class="aximo-title-animation">
+                    marketing solutions
+                    <span class="aximo-title-icon">
+                        <img src="{% static 'images/v1/star2.png' %}" alt="">
+                    </span>
+                </span>
+            </h2>
+        </div>
+        <div class="aximo-service-wrap">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.1s">
+                        <div class="aximo-iconbox-icon">
+                            <i class="icon-design-tools"></i>
+                        </div>
+                        <div class="aximo-iconbox-data">
+                            <h3>Marketing Strategy Development</h3>
+                            <p>From comprehensive market analysis to targeted campaign planning, our experienced team is dedicated to devising innovative solutions that drive growth and maximize ROI.</p>
+                            <a class="aximo-icon" href="{% url 'core:services' %}"><img src="{% static 'images/icon/arrow-right.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.2s">
+                        <div class="aximo-iconbox-icon">
+                            <i class="icon-branding"></i>
+                        </div>
+                        <div class="aximo-iconbox-data">
+                            <h3>SEO + Social Media Marketing</h3>
+                            <p>Crafting integrated marketing strategies that combine the power of search engine optimization and social media to boost your online presence and drive meaningful connections.</p>
+                            <a class="aximo-icon" href="{% url 'core:services' %}"><img src="{% static 'images/icon/arrow-right.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.3s">
+                        <div class="aximo-iconbox-icon">
+                            <i class="icon-web"></i>
+                        </div>
+                        <div class="aximo-iconbox-data">
+                            <h3>E-commerce Marketing</h3>
+                            <p>We specialize in strategic advertising campaigns to targeted email marketing, our experienced team is dedicated to maximizing your online presence and ROI.</p>
+                            <a class="aximo-icon" href="{% url 'core:services' %}"><img src="{% static 'images/icon/arrow-right.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.4s">
+                        <div class="aximo-iconbox-icon">
+                            <i class="icon-design-thinking"></i>
+                        </div>
+                        <div class="aximo-iconbox-data">
+                            <h3>PPC Marketing</h3>
+                            <p>Driving targeted traffic to your website through strategic pay-per-click advertising campaigns in Google Ads, Facebook Ads, and more to maximize your ROI.</p>
+                            <a class="aximo-icon" href="{% url 'core:services' %}"><img src="{% static 'images/icon/arrow-right.svg' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<div class="section aximo-section-padding">
+    <div id="aximo-counter"></div>
+    <div class="container">
+        <div class="aximo-section-title">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h2>
+                        <span class="aximo-title-animation">
+                            Thinking Outside
+                            <span class="aximo-title-icon">
+                                <img src="{% static 'images/v1/star2.png' %}" alt="">
+                            </span>
+                        </span>
+                        The Bubble
+                    </h2>
+                </div>
+                <div class="col-lg-4 offset-lg-1 d-flex align-items-center">
+                    <p>We deliver tailored solutions by starting with strategic consultations to understand each client's unique challenges and goals.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="aximo-video-wrap wow fadeInUpX" data-wow-delay="0s">
+                    <img src="{% static 'images/v1/video-bg.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-counter-wrap">
+                    <div class="aximo-counter-data">
+                        <h2 class="aximo-counter-number"><span data-percentage="10" class="aximo-counter"></span>+</h2>
+                        <p>Years of experience</p>
+                    </div>
+                    <div class="aximo-counter-data">
+                        <h2 class="aximo-counter-number"><span data-percentage="500" class="aximo-counter"></span>+</h2>
+                        <p>Successful projects</p>
+                    </div>
+                    <div class="aximo-counter-data">
+                        <h2 class="aximo-counter-number"><span data-percentage="100" class="aximo-counter"></span>%</h2>
+                        <p>Client satisfaction rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="section dark-bg aximo-section-padding">
+    <div class="container">
+        <div class="aximo-section-title center light">
+            <h2>
+                Why choose
+                <span class="aximo-title-animation">
+                    Wizz Digital?
+                    <span class="aximo-title-icon">
+                        <img src="{% static 'images/v1/star2.png' %}" alt="">
+                    </span>
+                </span>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.1s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Trailblazing Creativity</h3>
+                        <p>Our team of creative minds is dedicated to pushing the boundaries of what's possible in marketing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.2s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Customized Solutions</h3>
+                        <p>We understand that one size does not fit all. Our solutions are tailored to meet your unique needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.3s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Proven Results</h3>
+                        <p>Our track record speaks for itself. We have a history of delivering tangible and measurable results.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.4s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Continuous Learning</h3>
+                        <p>In an ever-evolving landscape, we stay ahead of the curve by embracing continuous learning.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.5s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Client-Centric Approach</h3>
+                        <p>Your success is our success. We value transparent communication and long-lasting partnerships.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="aximo-iconbox-wrap light wow fadeInUpX" data-wow-delay="0.6s">
+                    <div class="aximo-iconbox-data">
+                        <h3>Data-Driven Insights</h3>
+                        <p>We leverage data-driven insights for measurable results and continuous optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="section aximo-section-padding3">
+    <div class="container">
+        <div class="aximo-section-title center">
+            <h2>
+                Clients are always
+                <span class="aximo-title-animation">
+                    satisfied with us
+                    <span class="aximo-title-icon">
+                        <img src="{% static 'images/v1/star2.png' %}" alt="">
+                    </span>
+                </span>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="aximo-testimonial-wrap wow fadeInUpX" data-wow-delay="0.1s">
+                    <div class="aximo-testimonial-rating">
+                        <ul>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="aximo-testimonial-data">
+                        <h3>Completely transformed!</h3>
+                        <p>Thank you to Wizz Digital team. They have completely transformed our marketing approach and delivered exceptional results for our business.</p>
+                    </div>
+                    <div class="aximo-testimonial-author">
+                        <div class="aximo-testimonial-author-thumb">
+                            <img src="{% static 'images/v1/t_thumb1.png' %}" alt="">
+                        </div>
+                        <div class="aximo-testimonial-author-data">
+                            <p>Talk <span>Business Owner</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="aximo-testimonial-wrap wow fadeInUpX" data-wow-delay="0.2s">
+                    <div class="aximo-testimonial-rating">
+                        <ul>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="aximo-testimonial-data">
+                        <h3>Innovative and professional</h3>
+                        <p>The team's creativity and attention to detail have resulted in impactful campaigns that resonate with our audience.</p>
+                    </div>
+                    <div class="aximo-testimonial-author">
+                        <div class="aximo-testimonial-author-thumb">
+                            <img src="{% static 'images/v1/t_thumb2.png' %}" alt="">
+                        </div>
+                        <div class="aximo-testimonial-author-data">
+                            <p>Takeshi <span>Marketing Director</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="aximo-testimonial-wrap wow fadeInUpX" data-wow-delay="0.3s">
+                    <div class="aximo-testimonial-rating">
+                        <ul>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="aximo-testimonial-data">
+                        <h3>Game-changer for our brand</h3>
+                        <p>Working with Wizz Digital has been a game-changer for our brand. Their innovative approach and strategic thinking have elevated our marketing efforts.</p>
+                    </div>
+                    <div class="aximo-testimonial-author">
+                        <div class="aximo-testimonial-author-thumb">
+                            <img src="{% static 'images/v1/t_thumb3.png' %}" alt="">
+                        </div>
+                        <div class="aximo-testimonial-author-data">
+                            <p>Fight Flowers <span>Creative Director</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="aximo-testimonial-wrap wow fadeInUpX" data-wow-delay="0.4s">
+                    <div class="aximo-testimonial-rating">
+                        <ul>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                            <li><i class="icon-star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="aximo-testimonial-data">
+                        <h3>Exceptional service</h3>
+                        <p>Their collaborative approach and dedication to understanding our unique needs made all the difference. Highly recommended!</p>
+                    </div>
+                    <div class="aximo-testimonial-author">
+                        <div class="aximo-testimonial-author-thumb">
+                            <img src="{% static 'images/v1/t_thumb4.png' %}" alt="">
+                        </div>
+                        <div class="aximo-testimonial-author-data">
+                            <p>Sarah Johnson <span>CEO</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Slider -->
+<div class="aximo-auto-slider-section">
+    <div class="swiper aximo-auto-slider">
+        <div class="swiper-wrapper">
+            {% for i in "12345678" %}
+            <div class="swiper-slide">
+                <div class="aximo-auto-slider-item">
+                    <h3>Let's create new experiences</h3>
+                    <img src="{% static 'images/v1/star3.png' %}" alt="">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Server Error - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="aximo-error-section dark-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="aximo-error-content">
+                    <h1>500</h1>
+                    <h2>Server Error</h2>
+                    <p>Sorry, something went wrong on our end. Please try again later.</p>
+                    <a class="aximo-default-btn pill" href="{% url 'core:index' %}">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

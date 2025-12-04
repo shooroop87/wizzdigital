@@ -153,7 +153,7 @@ THUMBNAIL_ALIASES = {
 FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 
-# Логирование
+# Логи
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,

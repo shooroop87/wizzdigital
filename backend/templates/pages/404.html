@@ -4,14 +4,14 @@
 {% block title %}Page Not Found - Wizz Digital{% endblock %}
 
 {% block content %}
-<section class="aximo-error-section dark-bg aximo-section-padding">
+<section class="aximo-error-section dark-bg" style="min-height: 80vh; display: flex; align-items: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="aximo-error-content">
-                    <h1 class="error-code">404</h1>
-                    <h2>Page Not Found</h2>
-                    <p>Sorry, the page you are looking for doesn't exist or has been moved.</p>
+                    <h1 style="font-size: 8rem; font-weight: 700; color: #c1ff00; margin-bottom: 20px;">404</h1>
+                    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 20px;">Page Not Found</h2>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px;">Sorry, the page you are looking for doesn't exist or has been moved.</p>
                     <a class="aximo-default-btn pill" href="{% url 'core:index' %}">Back to Home</a>
                 </div>
             </div>

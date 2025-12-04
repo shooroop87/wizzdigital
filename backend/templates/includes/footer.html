@@ -27,9 +27,16 @@
                                     <li><a href="mailto:contact@wizzdigital.com">contact@wizzdigital.com</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        
-                        <div class="aximo-social-icon social-large">
+                            
+                            <!-- Get Started Section -->
+                            <div class="aximo-info aximo-get-started">
+                                <h4>Get Started</h4>
+                                <p>Take the next step in growing your business. Book your consultation today and let us help turn your vision into reality.</p>
+                                <a class="aximo-default-btn pill2 aximo-header-btn aximo-book-btn" href="{% url 'core:book_consultation' %}">
+                                    Book Consultation
+                                </a>
+                            </div>
+                            <div class="aximo-social-icon social-large aximo-footer-social">
                             <ul>
                                 <li>
                                     <a href="https://instagram.com/wizzdigitallosangeles" target="_blank">
@@ -37,6 +44,7 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
                         </div>
                         
                         <div class="aximo-hero-shape aximo-footer-shape">
@@ -81,7 +89,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="aximo-copywright one">
-                        <p>&copy; Copyright {% now "Y" %}, All Rights Reserved. </p>
+                        <p>&copy; Copyright {% now "Y" %}, All Rights Reserved. | <a href="{% url 'core:terms' %}" class="link-term">Terms & Conditions</a> | <a href="{% url 'core:privacy' %}" class="link-term">Privacy Policy</a></p>
                     </div>
                 </div>
             </div>

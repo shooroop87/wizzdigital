@@ -3,6 +3,8 @@
 
 {% block title %}Terms and Conditions - Wizz Digital{% endblock %}
 
+{% block meta_description %}Terms and Conditions for Wizz Digital LLC services including digital marketing and financial consulting services.{% endblock %}
+
 {% block content %}
 <section class="aximo-breadcrumb dark-bg">
     <div class="container">
@@ -21,7 +23,7 @@
                     <p>Welcome to Wizz Digital LLC. These Terms and Conditions govern your use of our website and services. By accessing or using our services, you agree to be bound by these terms.</p>
                     
                     <h2>2. Services</h2>
-                    <p>Wizz Digital LLC provides digital marketing services including but not limited to SEO, social media management, PPC advertising, email marketing, and creative services.</p>
+                    <p>Wizz Digital LLC provides business consulting and solutions services including but not limited to business setup, financial consulting, SEO, social media management, PPC advertising, email marketing, and creative services.</p>
                     
                     <h2>3. User Responsibilities</h2>
                     <p>Users agree to provide accurate information and use our services in compliance with all applicable laws and regulations.</p>
@@ -35,10 +37,125 @@
                     <h2>6. Contact Information</h2>
                     <p>For questions regarding these terms, please contact us at contact@wizzdigital.com or call (800) 792-1735.</p>
                     
-                    <p class="last-updated"><em>Last updated: {% now "F Y" %}</em></p>
+                    <div class="aximo-divider-lg"></div>
+                    
+                    <!-- Financial Consulting Services Terms -->
+                    <h2 class="section-title-highlight">Financial Consulting Services</h2>
+                    
+                    <h3>1. Introduction</h3>
+                    <p>These Terms and Conditions govern the provision of financial consulting services by Wizz Digital LLC ("Company," "we," or "our") to clients ("Client" or "you"). By booking a consultation or using our financial services, you agree to these Terms and Conditions.</p>
+                    
+                    <h3>2. Scope of Services</h3>
+                    <p>The Company provides guidance and consulting related to:</p>
+                    <ul>
+                        <li>Business and personal credit evaluation</li>
+                        <li>Financial planning and strategies for improving creditworthiness</li>
+                        <li>Advice on funding options, including loans, credit cards, and other financial products</li>
+                        <li>Guidance on potential lenders or financial institutions</li>
+                    </ul>
+                    <p>These services are advisory only. The Company does not guarantee loan approvals, credit increases, funding amounts, or specific financial outcomes. Decisions regarding financial products are made by the relevant financial institutions.</p>
+                    
+                    <h3>3. Client Responsibilities</h3>
+                    <ul>
+                        <li>You must provide accurate, truthful, and complete information and documentation necessary for us to assess your financial situation.</li>
+                        <li>The Company is not responsible for any consequences arising from false, misleading, or fraudulent information or documents provided by the Client.</li>
+                        <li>Clients acknowledge that financial decisions carry risks and outcomes may vary based on personal or business circumstances.</li>
+                        <li>You understand that the Company is not a lender, bank, or financial institution and does not provide funding directly.</li>
+                    </ul>
+                    
+                    <h3>4. Payments and Fees</h3>
+                    <ul>
+                        <li>All consultation fees are due at the time of booking, unless otherwise agreed in writing.</li>
+                        <li>Fees are non-refundable once services have commenced, except as required by law.</li>
+                        <li>Additional services or follow-up consultations may incur separate fees.</li>
+                    </ul>
+                    
+                    <h3>5. Limitation of Liability</h3>
+                    <ul>
+                        <li>The Company is not responsible for any losses, damages, or financial consequences resulting from actions taken based on our advice.</li>
+                        <li>Clients acknowledge that financial decisions are ultimately their own responsibility.</li>
+                    </ul>
+                    
+                    <h3>6. Confidentiality, Privacy, and Sensitive Information</h3>
+                    <ul>
+                        <li>All client information will be treated as confidential and used solely for the purpose of providing financial consulting services.</li>
+                        <li>The Company may collect sensitive personal and business information, including financial statements, credit reports, identification documents, and other necessary materials.</li>
+                        <li>Sensitive data will be stored securely and used only for the purpose of providing services. It will not be shared with third parties without consent, except as required by law or in connection with financial institutions as part of the consulting process.</li>
+                        <li>Clients consent to the collection, storage, and use of sensitive information for the purposes of financial consulting.</li>
+                    </ul>
+                    <p>For more information about how we handle your data, please see our <a href="{% url 'core:privacy' %}">Privacy Policy</a>.</p>
+                    
+                    <h3>7. International Clients</h3>
+                    <p>Services are available to clients worldwide. Clients are responsible for understanding and complying with local laws and regulations related to financial products and transactions in their country of residence.</p>
+                    
+                    <h3>8. Disclaimer</h3>
+                    <ul>
+                        <li>The Company provides general financial guidance and education. We do not provide legal, tax, or accounting advice. Clients should consult their own legal, tax, or financial advisors before making decisions based on our advice.</li>
+                        <li>Use of our services does not create a fiduciary relationship unless explicitly agreed in writing.</li>
+                    </ul>
+                    
+                    <h3>9. Termination</h3>
+                    <p>The Company reserves the right to refuse service or terminate consultations at any time if the client violates these Terms and Conditions, provides false or fraudulent information, or engages in illegal or unethical activity.</p>
+                    
+                    <h3>10. Governing Law</h3>
+                    <p>These Terms and Conditions are governed by the laws of California, United States of America, without regard to conflict of law principles.</p>
+                    
+                    <h3>11. Acceptance</h3>
+                    <p>By booking a consultation or using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+                    
+                    <p class="last-updated"><em>Last updated: December 2025</em></p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .aximo-legal-content h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .aximo-legal-content h3 {
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-size: 1.25rem;
+    }
+    
+    .aximo-legal-content p {
+        margin-bottom: 15px;
+        line-height: 1.7;
+    }
+    
+    .aximo-legal-content ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+    
+    .aximo-legal-content li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+    
+    .aximo-divider-lg {
+        height: 2px;
+        background: linear-gradient(to right, #c1ff00, transparent);
+        margin: 50px 0;
+    }
+    
+    .section-title-highlight {
+        background: linear-gradient(to right, rgba(193, 255, 0, 0.1), transparent);
+        padding: 15px 20px;
+        border-left: 4px solid #c1ff00;
+        margin-top: 0 !important;
+    }
+    
+    .last-updated {
+        margin-top: 40px;
+        color: #666;
+    }
+</style>
 {% endblock %}

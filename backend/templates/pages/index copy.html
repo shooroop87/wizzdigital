@@ -1,9 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{% block title %}Wizz Digital – Your Business Consulting & Solutions Agency{% endblock %}
-
-{% block meta_description %}Wizz Digital - Your Business Consulting & Solutions Agency in Beverly Hills. We help you structure your business, establish your brand, build your online presence, and access financing solutions.{% endblock %}
+{% block title %}Wizz Digital – Your Digital Marketing Agency{% endblock %}
 
 {% block content %}
 
@@ -24,7 +22,7 @@
                         </span>
                     </h1>
                     <div class="aximo-hero-btn-wrap">
-                        <a class="aximo-default-btn pill aximo-header-btn" href="#getintouch">
+                        <a class="aximo-default-btn pill aximo-header-btn aximo-cart-btn" href="#getintouch">
                             Get in Touch
                         </a>
                     </div>
@@ -35,7 +33,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="aximo-hero-thumb">
-                    <img src="https://andreyegorov.com/wizz/wp-content/uploads/2024/02/slider.svg" alt="Business Consulting">
+                    <img src="https://andreyegorov.com/wizz/wp-content/uploads/2024/02/slider.svg" alt="Digital Marketing">
                 </div>
             </div>
         </div>
@@ -50,9 +48,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>
-                        Your Business Consulting 
+                        Your Digital 
                         <span class="aximo-title-animation">
-                            & Solutions Agency
+                            Marketing Agency
                             <span class="aximo-title-icon">
                                 <img src="{% static 'assets/images/v1/star2.png' %}" alt="">
                             </span>
@@ -66,13 +64,12 @@
              <div class="col-lg-7">
                 <div class="aximo-about-content">
                     <h3 class="rt-spacer-60">Background</h3>
-                    <p>Welcome to Wizz Digital, your trusted partner in business growth, guiding you from startup to success. Our team helps you structure your business, establish your brand, build your online presence, and access financing solutions that empower long-term growth.</p>
+                    <p>Welcome to Wizz Digital, where innovation meets impact in the dynamic realm of marketing. Here, we redefine the landscape of marketing by blending creativity, cutting-edge technology, and strategic insights to craft unparalleled experiences that captivate audiences and drive results.</p>
                     
                     <div class="aximo-spacer-40"></div>
                     
-                    <h3 class="rt-spacer-60">Solutions</h3>
-                    <p>We provide comprehensive solutions that empower businesses to grow with confidence. By combining strategic guidance, practical tools, and financial insight, we help entrepreneurs overcome challenges, streamline operations, and unlock new opportunities.</p>
-                    <p>Whether you are starting a new venture, expanding an existing business, or seeking funding, our approach is tailored to meet your goals and drive sustainable success. With us, you receive more than advice; you gain actionable solutions that deliver real results.</p>
+                    <h3 class="rt-spacer-60">Solution</h3>
+                    <p>We deliver tailored solutions by starting with strategic consultations to understand each client's unique challenges and goals. Our approach involves crafting customized marketing strategies, developing innovative campaigns, and leveraging data-driven insights for measurable results. Through digital transformation, brand development, and technology integration, we ensure our clients stay ahead in the dynamic market. We prioritize continuous optimization, education, and collaborative partnerships, working closely with clients to empower them and exceed expectations.</p>
                 </div>
             </div>
 
@@ -99,15 +96,14 @@
         
         <div class="row aximo-thinking-content">
             <div class="col-lg-7">
-                <p>At Wizz Digital, we do not just follow trends or rely on conventional methods. We believe that every business has unique opportunities waiting to be discovered and our mission is to help our clients uncover them. By challenging traditional approaches and exploring new perspectives, we develop innovative strategies that drive growth and create real impact.</p>
+                <p>Welcome to Wizz Digital, where innovation meets impact in the dynamic realm of marketing. Here, we redefine the landscape of marketing by blending creativity, cutting-edge technology, and strategic insights to craft unparalleled experiences that captivate audiences and drive results.</p>
             </div>
         </div>
         
         <div class="row aximo-thinking-content-bottom">
             <div class="col-lg-5"></div>
             <div class="col-lg-7">
-                <p>Thinking outside the bubble means looking beyond the obvious solutions and identifying possibilities that others might overlook. It allows us to craft creative business strategies, uncover untapped markets, and deliver results that are both meaningful and sustainable. Our approach is guided by curiosity, insight, and a commitment to helping your business reach its full potential.</p>
-                <p>With our expertise and forward-thinking mindset, we empower entrepreneurs and business owners to break free from limitations, embrace innovation, and take bold steps that position their companies for long-term success.</p>
+                <p>We deliver tailored solutions by starting with strategic consultations to understand each client's unique challenges and goals. Our approach involves crafting customized marketing strategies, developing innovative campaigns, and leveraging data-driven insights for measurable results. Through digital transformation, brand development, and technology integration, we ensure our clients stay ahead in the dynamic market. We prioritize continuous optimization, education, and collaborative partnerships, working closely with clients to empower them and exceed expectations.</p>
             </div>
         </div>
     </div>
@@ -128,7 +124,10 @@
                             </span>
                         </span>
                     </h2>
-                    <p class="rt-spacer-60">Comprehensive solutions to help your business grow and succeed.</p>
+                    <p style="rt-spacer-60">Elevate your marketing strategy and make a difference.</p>
+                </div>
+                <div class="col-lg-5 d-flex align-items-center">
+                    
                 </div>
             </div>
         </div>
@@ -136,48 +135,73 @@
         <div class="aximo-service-wrap">
             <div class="row">
                 <div class="col-lg-6">
-                    <a href="{% url 'core:services_detail' %}#business-setup" class="aximo-iconbox-link">
-                        <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.1s">
-                            <div class="aximo-iconbox-data">
-                                <h3>Business Setup & Growth Services</h3>
-                                <p>We guide entrepreneurs and business owners through every step of starting and growing their business. From strategic planning and company registration to building a strong brand and online presence, our solutions make launching and scaling your business simpler and more effective.</p>
-                            </div>
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.1s">
+                        <div class="aximo-iconbox-data">
+                            <h3>Marketing Strategy Development</h3>
+                            <p>From comprehensive market analysis to targeted campaign planning, our experienced team is dedicated to devising innovative solutions that drive growth and maximize ROI.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <a href="{% url 'core:financial_consulting' %}" class="aximo-iconbox-link">
-                        <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.2s">
-                            <div class="aximo-iconbox-data">
-                                <h3>Financial & Credit Consulting Services</h3>
-                                <p>We help businesses secure the funding and financial support they need to thrive. Our team provides guidance on loans, credit cards, and credit improvement strategies, ensuring your business has the resources and financial foundation to grow confidently.</p>
-                            </div>
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.2s">
+                        <div class="aximo-iconbox-data">
+                            <h3>E-commerce Marketing</h3>
+                            <p>We specialize in strategic advertising campaigns to targeted email marketing, our experienced team is dedicated to maximizing your online presence and maximizing your return on investment.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <a href="{% url 'core:services_detail' %}#marketing" class="aximo-iconbox-link">
-                        <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.3s">
-                            <div class="aximo-iconbox-data">
-                                <h3>Marketing Services</h3>
-                                <p>Comprehensive strategies to connect your brand with the right audience and drive measurable results. Includes digital marketing, social media, branding, and content creation to enhance visibility, engagement, and business growth.</p>
-                            </div>
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.3s">
+                        <div class="aximo-iconbox-data">
+                            <h3>SEO + Social Media Marketing</h3>
+                            <p>Crafting integrated marketing strategies that combine the power of search engine optimization and social media to boost your online presence and drive meaningful connections with your audience.</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <a href="{% url 'core:services_detail' %}#additional" class="aximo-iconbox-link">
-                        <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.4s">
-                            <div class="aximo-iconbox-data">
-                                <h3>Additional Services</h3>
-                                <p>Tailored solutions to help businesses unlock new opportunities. Services include business acquisition guidance, mentorship, and specialized consulting to navigate complex challenges and accelerate success.</p>
-                            </div>
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.4s">
+                        <div class="aximo-iconbox-data">
+                            <h3>PPC Marketing</h3>
+                            <p>Driving targeted traffic to your website through strategic pay-per-click advertising campaigns in Google Ads, Facebook Ads, and more, we're here to maximize your ROI and business grow.</p>
                         </div>
-                    </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.5s">
+                        <div class="aximo-iconbox-data">
+                            <h3>Social Media Management</h3>
+                            <p>With a personalized approach tailored to your brand's voice and objectives, we ensure that your social media presence reflects your unique identity and resonates with your target audience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.6s">
+                        <div class="aximo-iconbox-data">
+                            <h3>Email Marketing</h3>
+                            <p>We specialize in compelling content creation to strategic campaign optimization to help you harness the power of email marketing to grow your business.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.7s">
+                        <div class="aximo-iconbox-data">
+                            <h3>Creative Services</h3>
+                            <p>Whether you're looking to launch a new product, rebrand your business, or create buzz around your next big event, we're here to help you stand out in a crowded marketplace.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="aximo-iconbox-wrap wow fadeInUpX" data-wow-delay="0.8s">
+                        <div class="aximo-iconbox-data">
+                            <h3>PR</h3>
+                            <p>Whether you're launching a new product, managing a crisis, or seeking to enhance your brand's reputation, our experienced team is here to guide you every step of the way.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
+        <div class="aximo-divider"></div>
     </div>
 </div>
 <!-- End Services Section -->
@@ -188,22 +212,22 @@
         <div class="aximo-section-title-center">
             <div class="row">
                 <div class="col-lg-12 choose-title-wrapper">
-                    <h2>
-                        Why choose 
-                        <span class="aximo-title-animation">
-                            us?
-                            <span class="aximo-title-icon">
-                                <img src="{% static 'assets/images/v1/star2.png' %}" alt="">
-                            </span>
-                        </span>
-                    </h2>
+    <h2>
+        Why choose 
+        <span class="aximo-title-animation">
+            us?
+            <span class="aximo-title-icon">
+                <img src="/static/assets/images/v1/star2.png" alt="">
+            </span>
+        </span>
+    </h2>
 
-                    <div class="aximo-why-choose-image">
-                        <img src="https://andreyegorov.com/wizz/wp-content/uploads/2024/02/123213131-PhotoRoom.png-PhotoRoom.png" 
-                             alt="Wizz Digital Globe"
-                             class="globe-icon">
-                    </div>
-                </div>
+    <div class="aximo-why-choose-image">
+        <img src="https://andreyegorov.com/wizz/wp-content/uploads/2024/02/123213131-PhotoRoom.png-PhotoRoom.png" 
+             alt="Wizz Digital Globe"
+             class="globe-icon">
+    </div>
+</div>
             </div>
         </div>
         
@@ -211,7 +235,7 @@
             <div class="col-lg-6">
                 <div class="aximo-feature-box wow fadeInLeft" data-wow-delay="0.1s">
                     <h3>Trailblazing Creativity</h3>
-                    <p>Our team of creative minds is dedicated to pushing the boundaries of what's possible in business consulting.</p>
+                    <p>Our team of creative minds is dedicated to pushing the boundaries of what's possible in marketing.</p>
                 </div>
                 
                 <div class="aximo-feature-box wow fadeInLeft" data-wow-delay="0.2s">
@@ -227,7 +251,7 @@
             <div class="col-lg-6">
                 <div class="aximo-feature-box wow fadeInLeft" data-wow-delay="0.4s">
                     <h3>Continuous Learning</h3>
-                    <p>In an ever-evolving landscape, we stay ahead of the curve by embracing continuous learning and staying abreast of industry trends.</p>
+                    <p>In an ever-evolving landscape, we stay ahead of the curve by embracing continuous learning and abreast of industry trends.</p>
                 </div>
                 
                 <div class="aximo-feature-box wow fadeInLeft" data-wow-delay="0.5s">
@@ -275,7 +299,7 @@
                     </div>
                     <div class="aximo-testimonial-data">
                         <h3>Completely transformed!</h3>
-                        <p>Thank you to Wizz Digital team. They have completely transformed our business approach and delivered exceptional results.</p>
+                        <p>Thank you to Wizz Digital team. They have completely transformed....</p>
                     </div>
                     <div class="aximo-testimonial-author">
                         <div class="aximo-testimonial-author-thumb">
@@ -300,7 +324,7 @@
                     </div>
                     <div class="aximo-testimonial-data">
                         <h3>Innovative and professional</h3>
-                        <p>The team's creativity and attention to detail have resulted in impactful strategies that resonate with our business goals.</p>
+                        <p>The team's creativity and attention to detail have resulted in impactful campaigns that resonate with our audience.</p>
                     </div>
                     <div class="aximo-testimonial-author">
                         <div class="aximo-testimonial-author-thumb">
@@ -325,7 +349,7 @@
                     </div>
                     <div class="aximo-testimonial-data">
                         <h3>Innovative approach and strategic thinking</h3>
-                        <p>Working with Wizz Digital has been a game-changer for our brand. Their innovative approach and strategic thinking have elevated our business to new heights.</p>
+                        <p>Working with Wizz Digital has been a game-changer for our brand. Their innovative approach and strategic thinking have elevated our marketing efforts to new heights.</p>
                     </div>
                     <div class="aximo-testimonial-author">
                         <div class="aximo-testimonial-author-thumb">

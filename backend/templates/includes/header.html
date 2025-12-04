@@ -22,27 +22,24 @@
                             <a href="{% url 'core:index' %}" class="nav-link-item">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#about" class="nav-link-item">About Us</a>
+                            <a href="{% url 'core:index' %}#about" class="nav-link-item">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#services" class="nav-link-item">Services</a>
+                            <a href="{% url 'core:index' %}#services" class="nav-link-item">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#getintouch" class="nav-link-item">Contact Us</a>
+                            <a href="{% url 'core:financial_consulting' %}" class="nav-link-item">Financial Consulting</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'core:index' %}#getintouch" class="nav-link-item">Contact Us</a>
                         </li>
                     </ul>
                 </nav>
             </div>
 
             <div class="header-btn header-btn-l1 ms-auto d-none d-xs-inline-flex">
-                <a class="aximo-default-btn pill aximo-header-btn aximo-cart-btn" href="#">
-                    <span class="content" style="color: rgb(0, 0, 0);">
-                        Cart</span>
-                    <span class="icon-after btn-icon">
-                        
-                        
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 1024 1024" width="40px" height="40px"><defs><clipPath id="_clipPath_0VsQFGxaYfn42LnQDRtw77Jk0QyHMG9B"><rect width="1024" height="1024"></rect></clipPath></defs><g clip-path="url(#_clipPath_0VsQFGxaYfn42LnQDRtw77Jk0QyHMG9B)"><path d=" M 288 896 C 288 825.408 230.592 768 160 768 C 89.408 768 32 825.408 32 896 C 32 966.592 89.408 1024 160 1024 C 230.592 1024 288 966.592 288 896 Z M 96 896 C 96 860.704 124.704 832 160 832 C 195.296 832 224 860.704 224 896 C 224 931.296 195.296 960 160 960 C 124.704 960 96 931.296 96 896 Z M 864 1024 C 934.592 1024 992 966.592 992 896 C 992 825.408 934.592 768 864 768 C 793.408 768 736 825.408 736 896 C 736 966.592 793.408 1024 864 1024 Z M 864 832 C 899.296 832 928 860.704 928 896 C 928 931.296 899.296 960 864 960 C 828.704 960 800 931.296 800 896 C 800 860.704 828.704 832 864 832 Z M 992 640 L 115.776 640 L 147.776 576 L 768 576 C 780.896 576 792.576 568.224 797.536 556.32 L 957.536 172.32 C 961.664 162.432 960.576 151.168 954.624 142.272 C 948.672 133.376 938.688 128 928 128 L 144 128 L 57.6 12.8 C 47.008 -1.344 26.944 -4.256 12.8 6.4 C -1.344 16.992 -4.224 37.056 6.4 51.2 L 96 170.656 L 96 536.448 L 35.36 657.696 C 30.39 667.615 30.923 679.402 36.768 688.832 C 42.624 698.24 52.896 704 64 704 L 992 704 C 1009.696 704 1024 689.664 1024 672 C 1024 654.336 1009.696 640 992 640 Z M 746.656 512 L 160 512 L 160 192 L 880 192 L 746.656 512 L 746.656 512 Z " fill="rgb(255,255,255)"></path></g></svg>
-                    </span>
+                <a class="aximo-default-btn pill aximo-header-btn aximo-book-btn" href="{% url 'core:book_consultation' %}">
+                    <span class="content" style="color: rgb(0, 0, 0);">Book Consultation</span>
                 </a>
             </div>
             <!-- mobile menu trigger -->

@@ -6,8 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Wizz Digital – Your Digital Marketing Agency{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Wizz Digital - Your Digital Marketing Agency in Beverly Hills. We deliver tailored marketing solutions with creativity and cutting-edge technology.{% endblock %}">
+    <title>{% block title %}Wizz Digital – Your Business Consulting & Solutions Agency{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Wizz Digital - Your Business Consulting & Solutions Agency in Beverly Hills. We help you structure your business, establish your brand, build your online presence, and access financing solutions.{% endblock %}">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wizzdigital.com{% block og_url %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Wizz Digital – Your Business Consulting & Solutions Agency{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}We help you structure your business, establish your brand, build your online presence, and access financing solutions that empower long-term growth.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'assets/images/og-image.jpg' %}{% endblock %}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Wizz Digital – Your Business Consulting & Solutions Agency{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}We help you structure your business, establish your brand, build your online presence, and access financing solutions.{% endblock %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wizzdigital.com{% block canonical_url %}{% endblock %}">
 
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
@@ -31,6 +46,39 @@
     <link rel="stylesheet" href="{% static 'assets/css/wizzdigital.css' %}">
     
     {% block extra_css %}{% endblock %}
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Wizz Digital LLC",
+        "description": "Your Business Consulting & Solutions Agency. We help you structure your business, establish your brand, build your online presence, and access financing solutions.",
+        "url": "https://wizzdigital.com",
+        "telephone": "+1-800-792-1735",
+        "email": "contact@wizzdigital.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "8383 Wilshire Blvd., Suite 800",
+            "addressLocality": "Beverly Hills",
+            "addressRegion": "CA",
+            "postalCode": "90211",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "34.0625",
+            "longitude": "-118.3742"
+        },
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "sameAs": [
+            "https://instagram.com/wizzdigitallosangeles"
+        ],
+        "priceRange": "$$",
+        "serviceType": ["Business Consulting", "Financial Consulting", "Marketing Services", "Business Setup"]
+    }
+    </script>
+    {% block extra_schema %}{% endblock %}
 </head>
 
 <body class="light">
@@ -66,6 +114,46 @@
     <script src="{% static 'assets/js/ScrollTrigger.min.js' %}"></script>
     <script src="{% static 'assets/js/faq.js' %}"></script>
     <script src="{% static 'assets/js/app.js' %}"></script>
+    
+    <!-- Navigation Close Script -->
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // Close mobile menu when clicking navigation links
+        $('.site-menu-main .nav-link-item').on("click", function(){
+            $('.menu-block-wrapper').removeClass('active');
+            $('.menu-overlay').removeClass('active');
+            $('.mobile-menu-trigger').removeClass('active');
+        });
+        
+        // Smooth scroll for anchor links
+        $('a[href*="#"]').on('click', function(e) {
+            var target = $(this.hash);
+            if (target.length) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 80
+                }, 800);
+            }
+        });
+    });
+    </script>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(96433891, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/96433891" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     
     {% block extra_js %}{% endblock %}
 </body>

@@ -4,15 +4,15 @@
 {% block title %}Server Error - Wizz Digital{% endblock %}
 
 {% block content %}
-<section class="aximo-error-section dark-bg aximo-section-padding" style="min-height: 80vh; display: flex; align-items: center;">
+<section class="aximo-error-section dark-bg" style="min-height: 80vh; display: flex; align-items: center;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="aximo-error-content">
-                    <h1 style="font-size: 8rem; font-weight: 700; color: #fff; margin-bottom: 20px;">500</h1>
+                    <h1 style="font-size: 8rem; font-weight: 700; color: #c1ff00; margin-bottom: 20px;">500</h1>
                     <h2 style="font-size: 2rem; color: #fff; margin-bottom: 20px;">Server Error</h2>
                     <p style="color: rgba(255,255,255,0.7); margin-bottom: 40px;">Sorry, something went wrong on our end. Please try again later.</p>
-                    <a class="aximo-default-btn pill" href="{% url 'core:index' %}" style="background: #c1ff00; color: #000;">Back to Home</a>
+                    <a class="aximo-default-btn pill" href="{% url 'core:index' %}">Back to Home</a>
                 </div>
             </div>
         </div>

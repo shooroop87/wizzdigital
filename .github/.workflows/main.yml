@@ -1,0 +1,151 @@
+name: Main wizzdigital workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7
+        ports: ["6379:6379"]
+        options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install OS deps for cairo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev pkg-config python3-dev libffi-dev
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8==6.0.0 flake8-isort==6.0.0
+          pip install -r ./backend/requirements.txt
+
+      - name: Django tests
+        run: |
+          cd backend/
+          python manage.py test
+
+  build_and_push_to_docker_hub:
+    name: Push Docker image to DockerHub
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker 
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN_RW }}
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend/
+          push: true
+          tags: egorovdocker/wizzdigital_backend:latest
+
+  build_gateway_and_push_to_docker_hub:
+    name: Push gateway Docker image to DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker 
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN_RW }}
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v6
+        with:
+          context: ./gateway/
+          push: true
+          tags: egorovdocker/wizzdigital_gateway:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: 
+      - build_and_push_to_docker_hub
+      - build_gateway_and_push_to_docker_hub
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    - name: Copy docker-compose.yml via ssh
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        source: "docker-compose.production.yml"
+        target: "wizzdigital"
+    - name: Executing remote ssh commands to deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          cd wizzdigital
+          echo "${{ secrets.DOCKERHUB_TOKEN_RO }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          sudo docker system prune -f
+          sudo docker compose -f docker-compose.production.yml pull
+          
+          echo "🔄 Restarting application services..."
+          sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway
+          
+          echo "⏳ Waiting for services to start..."
+          sleep 30
+          
+          sudo docker compose -f docker-compose.production.yml ps
+          
+          echo "🧹 Safe cleanup..."
+          sudo docker container prune -f
+          sudo docker image prune -f
+          
+          echo "🌍 Compiling messages..."
+          sudo docker compose -f docker-compose.production.yml exec backend python manage.py compilemessages
+          
+          echo "📁 Collecting static files..."
+          sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --noinput --clear
+          
+          echo "✅ Deployment completed!"
+          sudo docker compose -f docker-compose.production.yml ps
+
+  send_message:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+    - name: Send message
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          🎉 Деплой wizzdigital успешно завершен!
+          🔧 Коммит: ${{ github.sha }}
+          👤 Автор: ${{ github.actor }}
+          🔗 Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          
+          ✅ Статика собрана
+          ✅ Переводы скомпилированы
+          
+          🌐 Сайт готов к работе

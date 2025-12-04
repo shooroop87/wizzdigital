@@ -58,12 +58,26 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
+            set -e
             cd wizzdigital
+
             echo "${{ secrets.DOCKERHUB_TOKEN_RO }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+            # подтягиваем свежие образы
             sudo docker compose -f docker-compose.production.yml pull
-            sudo docker compose -f docker-compose.production.yml up -d --no-deps backend gateway
+
+            # поднимаем все нужные сервисы с учётом depends_on (redis -> backend -> gateway)
+            sudo docker compose -f docker-compose.production.yml up -d
+
+            # лёгкая пауза на старт
             sleep 10
+
+            # смотрим статус
+            sudo docker compose -f docker-compose.production.yml ps
+
+            # очищаем мусор, тома не трогаем
             sudo docker system prune -f
+
             echo "✅ Deployed!"
 
   notify:

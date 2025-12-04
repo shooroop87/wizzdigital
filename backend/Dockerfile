@@ -32,4 +32,4 @@ EXPOSE 8000
 # <<< ВАЖНО: теперь entrypoint реально будет выполняться >>>
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-CMD ["gunicorn", "wizzdigital.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=3"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=3"]

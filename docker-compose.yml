@@ -26,7 +26,7 @@ services:
         condition: service_healthy
     # Скрипт ниже применит миграции и соберёт статику
     entrypoint: ["/app/entrypoint.sh"]
-    command: ["gunicorn", "wizzdigital.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=3"]
+    command: ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=3"]
     volumes:
       # Статика будет собираться в /app/collected_static
       - static:/app/collected_static

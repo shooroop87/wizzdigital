@@ -89,7 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# SQLite (без внешней БД)
+# SQLite
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
-    # 3rd party
     "easy_thumbnails",
     "filer",
     "mptt",

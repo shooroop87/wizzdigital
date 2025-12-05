@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "mptt",
     "parler",
     "meta",
-    # Local
     "core",
 ]
 

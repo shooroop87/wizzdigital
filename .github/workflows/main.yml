@@ -47,6 +47,8 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: 22
+          timeout: 60s
           source: "docker-compose.production.yml"
           target: "wizzdigital"
           
@@ -63,22 +65,41 @@ jobs:
 
             echo "${{ secrets.DOCKERHUB_TOKEN_RO }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-            # подтягиваем свежие образы
+            # Останавливаем старые контейнеры
+            sudo docker compose -f docker-compose.production.yml down --remove-orphans || true
+
+            # Подтягиваем свежие образы
             sudo docker compose -f docker-compose.production.yml pull
 
-            # поднимаем все нужные сервисы с учётом depends_on (redis -> backend -> gateway)
+            # Поднимаем сервисы
             sudo docker compose -f docker-compose.production.yml up -d
 
-            # лёгкая пауза на старт
+            # Ждём запуска
             sleep 10
 
-            # смотрим статус
+            # Статус
             sudo docker compose -f docker-compose.production.yml ps
 
-            # очищаем мусор, тома не трогаем
+            # === ЧИСТКА ===
+            
+            # Удалить ВСЕ неиспользуемые образы (старые версии)
+            sudo docker image prune -af
+            
+            # Удалить остановленные контейнеры, сети, кэш
             sudo docker system prune -f
+            
+            # Обрезать логи контейнеров (каждый до 10MB)
+            for log in /var/lib/docker/containers/*/*-json.log; do
+              sudo truncate -s 10M "$log" 2>/dev/null || true
+            done
+            
+            # Удалить старые логи приложения (старше 30 дней)
+            sudo find /var/log -name "*.log" -mtime +30 -delete 2>/dev/null || true
+            
+            # Очистить systemd journal (оставить 100MB)
+            sudo journalctl --vacuum-size=100M 2>/dev/null || true
 
-            echo "✅ Deployed!"
+            echo "✅ Deployed and cleaned!"
 
   notify:
     runs-on: ubuntu-latest

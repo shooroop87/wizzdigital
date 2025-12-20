@@ -1,27 +1,21 @@
-FROM python:3.9-slim-bookworm
-
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# 1) зависимости
+# Минимум зависимостей системы
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 2) код проекта
 COPY . .
 
-# 3) каталог для статики + сбор статики при сборке образа
-RUN mkdir -p /app/collected_static && \
-    SECRET_KEY=build-time-secret python manage.py collectstatic --noinput
+RUN chmod +x entrypoint.sh
 
-# 4) entrypoint
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+# Собираем статику на этапе сборки
+RUN python manage.py collectstatic --noinput
 
-EXPOSE 8000
-
-ENTRYPOINT ["/app/entrypoint.sh"]
-
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers=1"]
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2", "--threads", "2", "--timeout", "30", "--max-requests", "1000", "--max-requests-jitter", "50"]

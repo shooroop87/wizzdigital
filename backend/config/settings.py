@@ -39,11 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
-    "easy_thumbnails",
-    "filer",
-    "mptt",
-    "parler",
-    "meta",
     "core",
 ]
 
@@ -120,9 +115,7 @@ if DEBUG:
 else:
     CACHES = {
         "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": os.getenv("REDIS_URL", "redis://redis:6379/1"),
-            "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         }
     }
 
@@ -151,21 +144,27 @@ THUMBNAIL_ALIASES = {
 FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 
-# Логи
+# Минимальное логирование - только ошибки
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "formatter": "simple",
+            "level": "ERROR",
         },
     },
-    "formatters": {
-        "simple": {"format": "{levelname} {asctime} {message}", "style": "{"},
+    "root": {
+        "handlers": ["console"],
+        "level": "ERROR",
     },
-    "root": {"handlers": ["console"], "level": "INFO"},
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
 }
 
-# stdout fix
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")

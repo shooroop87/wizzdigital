@@ -1827,7 +1827,7 @@ blockquote {
 
 .dark-bg2 {
   background-color: var(--dark-bg) !important;
-  background-image: url(https://andreyegorov.com/wizz/wp-content/uploads/2024/02/bg09.png);
+  background-image: url("/static/assets/images/bg09.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

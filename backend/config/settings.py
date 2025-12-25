@@ -10,7 +10,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "1insecure1-1default1")
 
-# DEBUG
+# DEBU
 DEBUG = False
 
 # Allowed hosts
@@ -119,29 +119,9 @@ else:
         }
     }
 
-# Thumbnails
-THUMBNAIL_HIGH_RESOLUTION = True
-THUMBNAIL_QUALITY = 85
-THUMBNAIL_FORMAT = "WEBP"
-THUMBNAIL_PROCESSORS = (
-    "easy_thumbnails.processors.colorspace",
-    "easy_thumbnails.processors.autocrop",
-    "easy_thumbnails.processors.scale_and_crop",
-    "filer.thumbnail_processors.scale_and_crop_with_subject_location",
-    "easy_thumbnails.processors.filters",
-)
-
-THUMBNAIL_ALIASES = {
-    "": {
-        "hero": {"size": (1920, 1080), "crop": "smart", "quality": 90},
-        "card": {"size": (800, 600), "crop": "smart", "quality": 85},
-        "thumb": {"size": (400, 300), "crop": "smart", "quality": 80},
-        "og_image": {"size": (1200, 630), "crop": "smart", "quality": 90, "format": "JPEG"},
-    }
-}
 
 # Загрузка файлов
-FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 
 # Минимальное логирование - только ошибки

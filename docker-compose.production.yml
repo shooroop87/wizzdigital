@@ -1,104 +1,32 @@
 volumes:
   static_volume:
-  media:
-  redis_data:
 
 services:
-  redis:
-    image: redis:7
-    volumes:
-      - redis_data:/data
-    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
   backend:
     image: egorovdocker/wizzdigital_backend:latest
     pull_policy: always
     env_file: .env
     volumes:
       - static_volume:/app/collected_static
-      - media:/app/media/
-    depends_on:
-      redis:
-        condition: service_healthy
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
 
   gateway:
     image: egorovdocker/wizzdigital_gateway:latest
     pull_policy: always
-    env_file: .env
     volumes:
       - static_volume:/staticfiles:ro
-      - media:/app/media/:ro
     ports:
       - "8000:80"
     depends_on:
       - backend
     restart: unless-stopped
-
-  # === СЕРВИСЫ ОБСЛУЖИВАНИЯ ===
-
-  redis-cleaner:
-    image: redis:7
-    env_file: .env
-    depends_on:
-      redis:
-        condition: service_healthy
-    restart: "no"
-    profiles: ["maintenance"]
-    command: >
-      sh -c "
-        echo 'Starting Redis cache cleanup...' &&
-        echo 'NOTE: consider using SCAN instead of KEYS in production for large datasets.' &&
-        redis-cli -h redis KEYS 'cache:*' | xargs -r -n 1000 redis-cli -h redis DEL || true &&
-        echo 'Redis cache cleaned'
-      "
-
-  file-cleaner:
-    image: alpine:latest
-    volumes:
-      - media:/app/media/
-      - ./logs:/app/logs
-    restart: "no"
-    profiles: ["maintenance"]
-    command: >
-      sh -c "
-        echo 'Cleaning old files...' &&
-        find /app/media/temp -type f -mtime +7 -delete 2>/dev/null || true &&
-        find /app/logs -name '*.log' -mtime +30 -delete 2>/dev/null || true &&
-        echo 'File cleanup completed'
-      "
-
-  system-monitor:
-    image: alpine:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: "no"
-    profiles: ["monitoring"]
-    command: >
-      sh -c "
-        apk add --no-cache docker-cli &&
-        echo 'System Resource Usage:' &&
-        docker stats --no-stream --format 'table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}' &&
-        echo '' &&
-        echo 'Volume Usage:' &&
-        docker system df -v | grep -E '(VOLUME NAME|wizzdigital)' || true
-      "
-
-  docker-cleaner:
-    image: docker:cli
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: "no"
-    profiles: ["maintenance"]
-    command: >
-      sh -c "
-        echo 'Cleaning Docker system...' &&
-        docker system prune -f &&
-        echo 'Docker system cleaned'
-      "
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
